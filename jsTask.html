@@ -1,0 +1,55 @@
+﻿<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>JS Task</title>
+	</head>
+	<body>
+	<script>
+/*		 1. Напишите реализацию функции getObject(path, obj), которая вернет значение аттрибута объекта obj по заданному пути */
+		function getObject(path, obj){
+			path.split('.').forEach(function(key){ obj = obj[key]; }); 
+			 return obj;
+		};
+		var o = {a: {b: 'c'}};
+	</script>
+	<script>
+/* 		2. Напишите реализацию конструктора, принимающего на вход объект и создающего аттрибуты\методы по ключам этого объекта */ 
+		var Person = function(args){
+			for(var key in args){  
+			   this[key] = args[key]
+			}
+		};
+		var p = new Person({
+		   name: 'Jack',
+		   age: '10',
+		   jump: function(){ return "My name is " + this.name + " and I can jump.";}
+		});
+	</script>
+	<script>
+/* 		3. Модифицируйте конструктор из прошлой задачи, добавив к нему геттеры\сеттеры для каждого переданного свойства. */
+		var Person =  function(args) {
+			for (var i in args) { 
+				(function(i){
+					this['get' + i] = function() {
+						return args[i];
+					};
+					this['set' + i] = function(val) {
+						args[i] = val;
+					};
+				}.call(this, i));
+			}
+		}
+	</script>
+	<script>
+/*   	4. Реализация функции deepCopy - для копирования объекта с учетом вложенных объектов */
+		function deepCopy(obj) {
+			    var copy = obj.constructor();
+			    for (var attr in obj) {
+			        if (obj.hasOwnProperty(attr)) copy[attr] = obj[attr];
+			    }
+			    return copy;
+			}
+	</script>
+	</body>
+</html>

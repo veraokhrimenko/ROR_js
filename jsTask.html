@@ -11,7 +11,6 @@
 			path.split('.').forEach(function(key){ obj = obj[key]; }); 
 			 return obj;
 		};
-		var o = {a: {b: 'c'}};
 	</script>
 	<script>
 /* 		2. Напишите реализацию конструктора, принимающего на вход объект и создающего аттрибуты\методы по ключам этого объекта */ 
@@ -20,11 +19,6 @@
 			   this[key] = args[key]
 			}
 		};
-		var p = new Person({
-		   name: 'Jack',
-		   age: '10',
-		   jump: function(){ return "My name is " + this.name + " and I can jump.";}
-		});
 	</script>
 	<script>
 /* 		3. Модифицируйте конструктор из прошлой задачи, добавив к нему геттеры\сеттеры для каждого переданного свойства. */
